@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+
+
+
+</head>
+<body tabindex="1">
+
+    <header>
+        <h3><strong>Hey <span class="special">Jenny</span></strong></h3>
+    </header>
+
+    <div class="container mt-3">
+        <div class="form-group">
+            <span class="switch switch-sm">
+                <input type="checkbox" class="switch" id="switch-sm">
+                <label for="switch-sm">Enable video voice controller</label>
+            </span>
+        </div>
+        <p id="info" class="text-success hidden" align="center">I'm listening to you</p>
+        <small id="unlock" class="text-info hidden">Make sure the microphone is enabled</small>
+    </div>
+
+
+    <script src="jquery-3.1.0.min.js"></script>
+    <script src="annyang.js"></script>
+
+    <script src="main.js"></script>
+</body>
+</html>
