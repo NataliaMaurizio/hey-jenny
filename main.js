@@ -26,6 +26,7 @@ function enable() {
     // get the url for the current tab
     chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
         let url = tabs[0].url;
+        let id = tabs[0].id;
 
         chrome.cookies.set({
             url: url,
@@ -33,32 +34,15 @@ function enable() {
             value: "true"
         });
 
-    });
-
-    chrome.tabs.getSelected(null, function (tab) {
-        chrome.tabs.executeScript(tab.id, {file: "annyang.js"}, function (response) {
-
+        chrome.tabs.executeScript(id, {file: "vr.js"}, function (response) {
             if (response) {
-                chrome.tabs.executeScript(tab.id, {code: "if (annyang) { annyang.start(); }"}, function (response) {
-                    if (response) {
 
-                        /*tab.navigator.webkitGetUserMedia({ audio: true }, s => {
-                            alert('well done');
-                        }, err => {
-                            alert('ops');
-                        });*/
-
-
-
-                        document.getElementById('info').classList.remove('hidden');
-                        document.getElementById('unlock').classList.remove('hidden');
-
-                    }
-                })
+                document.getElementById('info').classList.remove('hidden');
+                document.getElementById('unlock').classList.remove('hidden');
             }
-
         });
-    })
+
+    });
 
 }
 
@@ -66,6 +50,7 @@ function disable() {
 
     chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
         let url = tabs[0].url;
+        let id = tabs[0].id;
 
         chrome.cookies.remove({
             url: url,
@@ -74,6 +59,9 @@ function disable() {
 
         document.getElementById('info').classList.add('hidden');
         document.getElementById('unlock').classList.add('hidden');
+
+        chrome.tabs.executeScript(id, {code: "abort();"}, function (response) {
+        });
 
     });
 

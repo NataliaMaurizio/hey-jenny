@@ -2,7 +2,11 @@
   "manifest_version": 2,
 
   "name": "Hey Jenny!",
-  "permissions": [ "cookies", "tabs", "http://*/*", "https://*/*" ],
+  "permissions": [ "cookies", "tabs", "background", "http://*/*", "https://*/*" ],
+  "background": {
+    "scripts": ["scripts/background.js"],
+    "persistent": false
+  },
   "description": "Hey Jenny! Your personal video voice controller...",
   "version": "1.0",
   "icons": {
