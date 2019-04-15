@@ -8,8 +8,6 @@ listening = false;
 // get the video when code is injected
 video = document.getElementsByTagName("video")[0];
 
-
-
 if ('SpeechRecognition' in window) {
     console.warn("Speech Recognition is supported");
 
@@ -36,6 +34,7 @@ if ('SpeechRecognition' in window) {
 
                 if (speechToText.includes('alessia')) {
                     console.warn("start listening...");
+
 
                     video.volume = 0.2;
                     listening = true;
