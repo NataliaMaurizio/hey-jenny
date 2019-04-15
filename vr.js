@@ -29,21 +29,46 @@ if ('SpeechRecognition' in window) {
     recognition.onresult = (event) => {
 
         for (let i = event.resultIndex, len = event.results.length; i < len; i++) {
-            const speechToText = event.results[i][0].transcript;
+            let speechToText = event.results[i][0].transcript.toLowerCase();
 
             if (event.results[i].isFinal) {
 
-                if (speechToText.toLowerCase().includes('alessia')) {
+                if (speechToText.includes('alessia')) {
                     console.warn("start listening...");
 
                     video.volume = 0.2;
                     listening = true;
 
+                    if (speechToText.includes('stop') ||
+                        speechToText.includes('pause')) {
+                        console.warn("stop video");
+                        video.pause();
+
+
+                    }
+
+                    else if (speechToText.includes('play') || speechToText.includes('start')) {
+                        console.warn("play video");
+                        video.play();
+
+
+                    }
+
+                    else if (speechToText.includes('restart')) {
+                        console.warn("restart video");
+
+                        video.pause();
+                        video.currentTime = 0;
+                        video.play();
+
+                    }
+
                     return new Promise((resolve, reject) => {
                         setTimeout(() => {
-                            resolve("ok");
+                            resolve(speechToText);
                         }, 4500);
                     }).then(function success(data) {
+
                         video.volume = 1;
                         listening = false;
 
@@ -55,21 +80,25 @@ if ('SpeechRecognition' in window) {
                 }
 
                 if (listening) {
-                    if (speechToText.toLowerCase().includes('stop') ||
-                        speechToText.toLowerCase().includes('pause')) {
+                    if (speechToText.includes('stop') ||
+                        speechToText.includes('pause')) {
                         console.warn("stop video");
                         video.pause();
                     }
 
-                    else if (speechToText.toLowerCase().includes('play')) {
+                    else if (speechToText.includes('play') || speechToText.includes('start')) {
                         console.warn("play video");
                         video.play();
                     }
+
+                    else if (speechToText.includes('restart')) {
+                        console.warn("restart video");
+
+                        video.pause();
+                        video.currentTime = 0;
+                        video.play();
+                    }
                 }
-
-
-
-
 
             }
 
