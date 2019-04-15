@@ -40,8 +40,11 @@ function enable() {
                 document.getElementById('info').classList.remove('hidden');
                 document.getElementById('unlock').classList.remove('hidden');
 
+
             }
         });
+
+
 
     });
 

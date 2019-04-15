@@ -9,6 +9,7 @@ listening = false;
 video = document.getElementsByTagName("video")[0];
 
 
+
 if ('SpeechRecognition' in window) {
     console.warn("Speech Recognition is supported");
 
@@ -38,6 +39,8 @@ if ('SpeechRecognition' in window) {
 
                     video.volume = 0.2;
                     listening = true;
+
+
 
                     if (speechToText.includes('stop') ||
                         speechToText.includes('pause')) {
