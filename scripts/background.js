@@ -11,7 +11,6 @@ chrome.tabs.onActivated.addListener(function(active) {
             if (cookie != null && cookie.value != null && cookie.value == 'true') {
                 chrome.tabs.executeScript(active.tabId, {file: "vr.js"}, function (response) {
                     if (response) {
-
                     }
                 });
             }

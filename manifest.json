@@ -7,7 +7,7 @@
     "scripts": ["scripts/background.js"],
     "persistent": false
   },
-  "description": "Hey Jenny! Your personal video voice controller...",
+  "description": "Hey Alessia! Your personal video voice controller...",
   "version": "1.0",
   "icons": {
     "128": "icon.png"
